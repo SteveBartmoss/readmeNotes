@@ -63,6 +63,74 @@ class ProductoController extends Controller
     }
 
     //Mostrar formulario de edicion
-    
+    public function edit(Producto $producto)
+    {
+        return view('productos.edit', compact('producto'))
+    }
+
+    // Actualizar recurso
+    public function update(Request $request, Producto $producto)
+    {
+        $validated = $request->validate([
+            'nombre' => 'required|max:255',
+            'precio' => 'required|numeric',
+        ]);
+
+        $producto->update($validated);
+
+        return redirect()->route('productos.index')
+                        ->with('success', 'Producto actualizado');
+    }
+
+    //Eliminar recurso
+    public function destroy(Producto $producto)
+    {
+        $producto->delete();
+
+        return redirect()->route('productos.index')
+                            ->with('succes', 'Producto eliminado');
+    }
+}
+```
+
+## Tecnicas Avanzadas con Eloquent en Controladores
+
+**Inyecion de Modelos (Route Mondel Binding)**
+
+```php
+public function show(Producto $producto)
+{
+    return view('productos.show', ['producto' => $producto]);
+}
+```
+
+**Eager Loading para optimizacion**
+
+```php
+public function index()
+{
+    $productos = Productos::with('categoria', 'reviews')->get();
+    return view('productos.index', compact('productos'));
+}
+```
+
+**Busqueda y Filtrado**
+
+```php
+public function index(Request $request)
+{
+    $query = Producto::query();
+
+    if($requet->has('nombre')){
+        $query->where('nombre', 'like', '%'.$request->nombre.'%');
+    }
+
+    if($request->has('categoria_id')){
+        $query->where('categoria_id', $request->categoria_id);
+    }
+
+    $productos = $query->paginate(10);
+
+    return view('productos.index', compact('productos'));
 }
 ```
