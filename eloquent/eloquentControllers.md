@@ -134,3 +134,54 @@ public function index(Request $request)
     return view('productos.index', compact('productos'));
 }
 ```
+
+
+**Uso de Repositorios (Patron Repository)**
+
+```php
+// En el controlador
+public function __construct(ProductoRespository $prouctoRepo)
+{
+    $this->productoRepository = $productoRepo;
+}
+
+public function index()
+{
+    $productos = $this->productoRepository->all();
+    return view('productos.index', compact('productos'));
+}
+```
+
+## Buenas Praxticas para Controladores con Eloquent
+
+- **Mantener controladores delgados:**
+    - Mover logica de negocio a servicios o repositorios
+    - Usar Form Request para validacion compleja
+
+- **Manejo de excepciones**
+
+    ```php
+    public function show($id)
+    {
+        try{
+            $producto = Producto::findOrFail($id);
+            return view('productos.show', compact('producto'));
+        } catch (ModelNotFoundException $e){
+            abort(404, 'Producto no encontrado');
+        }
+    }
+    ```
+- **Respuestas consistentes:**
+
+    ```php
+    // Para APIs
+    return response()->json([
+        'data' => $producto,
+        'message' => 'Sucess',
+    ],200);
+
+    // Para web
+    return redirect()->back()->with('success', 'Operacion exitosa');
+    ```
+
+    
