@@ -183,5 +183,69 @@ public function index()
     // Para web
     return redirect()->back()->with('success', 'Operacion exitosa');
     ```
+- **Uso de Traits para funcionalidad comun:**
 
-    
+    ```php
+    trait ResponseTrait{
+        protected function apiResponse($data, $message = null, $status = 200)
+        {
+            return response()->json([
+                'data' => $data,
+                'message' => $message,
+            ], $status);
+        }
+    }
+    ```
+
+## Ejemplo de Controlador API con Eloquent
+
+```php
+
+namespace App\Http\Controllers\API;
+
+use App\Http\Controllers\Controller;
+use App\Models\Producto;
+use Illuminate\Http\Request;
+
+class ProductoAPIController extends Controller
+{
+    public function index()
+    {
+        return Producto::with('categoria')->paginate(15);
+    }
+
+    public function store(Request $request)
+    {
+        $producto = Producto::create($request->all());
+        return response()->json($producto,201);
+    }
+
+    public function show(Producto $producto)
+    {
+        return $producto->load('categoria', 'reviews');
+    }
+
+    public function update(Request $request, Producto $producto)
+    {
+        $producto->update($request->all());
+        return response()->json($producto);
+    }
+
+    public function destroy(Producto $producto){
+        $producto->delete();
+        return response()->json(null, 204);
+    }
+}
+```
+
+## Conclusion
+
+Los controladores en Laravel con Eloquent te permiten:
+
+- Organizar la logica de la aplicacion
+
+- Manejar operaciones CRUD de manera eficiente
+
+- Trabajar facilmente con relaciones entre modelos
+
+- Mantener un codigo limpio y mantenible
