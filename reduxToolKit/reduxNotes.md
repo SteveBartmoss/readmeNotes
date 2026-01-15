@@ -41,3 +41,16 @@ export const {
 
 export default itemsSlice.reducer
 ```
+
+Con lo anterior se tiene una estructura basica de un slice en redux, pero para poder utilizar lo o usar cualquier otro slice que configuremos, debemos configurar el index para redux tool kit
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import itemsReducer from './itemsReducer'
+
+export const store = configureStore({
+    refucer: {
+        items: itemsReducer
+    },
+})
+```
