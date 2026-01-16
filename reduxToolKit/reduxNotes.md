@@ -54,3 +54,24 @@ export const store = configureStore({
     },
 })
 ```
+
+Ya que tenemos configurado el index.store, debemos proporcionarlo o inyectarlo a la aplicacion de react de la siguiente manera
+
+```js
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
+import { Provider } from 'react-redux'
+import { store } from './store/index.js'
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <Provider store={store}>
+        <App /> 
+    </Provider>
+  </StrictMode>,
+)
+```
+
+Con esto ya podremo usar el slice desde cualquier parte de nuestra aplicacion, pues estamos encerrando toda la aplicacion dentro del provider de redux
