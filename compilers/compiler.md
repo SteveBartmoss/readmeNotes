@@ -13,3 +13,19 @@ conocimiento sobre como esta escrito el codigo, esto no es necesariamente malo y
 Un compilador en realidad se podria decir que es una maquina de estados que sigue una serie de relgas o instrucciones, para asegurarse de que el codigo que estamos ingresando es correcto y se puede traducir a un lenguaje maquina objetivo. 
 
 Parte importante de un compilador es la gramatica y es que basicamente es imposible lograr un buen compilador si la gramatica del lenguaje no esta bien definida o no existe, ya que a partir de esa gramatica se construye un compilador
+
+### Gramatica
+
+En el ambito de los automatas (un compilador es un automata en escencia) se trata de un conjunto finito de reglas, las cuales describe secuencias validas de simbolos que pertenecen a un lenguaje. El tipo de gramatica que se suele usar es una gramatica libre de contexto, formalmente una gramatica de este tipo se define asi 
+
+```js
+G = (V,T,P,S)
+```
+
+De aqui podemos obtenemos que: 
+
+- V(No terminlaes) es un conjunto finito de simbolos abstractos o variables
+- T(Terminales) es un conjunto finito de simbolos que forman palabras que corresponden al lenguaje 
+- P(Producciones) es un conjunto de reglas que definen como se puede reemplazar los simbolos no terminales
+- S(No terminal especial) es un simbolo no terminal que es un poco difentes pues el que marca el inicio de la generacion de cadenas
+
