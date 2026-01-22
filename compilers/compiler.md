@@ -29,5 +29,7 @@ De aqui podemos obtenemos que:
 - P(Producciones) es un conjunto de reglas que definen como se puede reemplazar los simbolos no terminales
 - S(No terminal especial) es un simbolo no terminal que es un poco difentes pues el que marca el inicio de la generacion de cadenas
 
+En general se suelen usar gramaticas que son conocidas como gramaticas libres de contexto, esto es porque cualquier relga se puede aplicar siempre y cuando aparesca el simbolo, no importa que simbolos esten al rededor, (de ahi que no sean sensibles al contexto).
+
 Aunque esto pueda parecer demasiado formalismo realmente es simple de comprender como se vera a continuación con estos ejemplos
 
