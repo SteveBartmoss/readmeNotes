@@ -29,3 +29,5 @@ De aqui podemos obtenemos que:
 - P(Producciones) es un conjunto de reglas que definen como se puede reemplazar los simbolos no terminales
 - S(No terminal especial) es un simbolo no terminal que es un poco difentes pues el que marca el inicio de la generacion de cadenas
 
+Aunque esto pueda parecer demasiado formalismo realmente es simple de comprender como se vera a continuación con estos ejemplos
+
