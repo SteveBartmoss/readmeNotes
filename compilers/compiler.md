@@ -1,33 +1,37 @@
-# Introduccion
+# Introducción
 
-Un compilador es una herramienta de programacion que permite pasar codigo de alto nivel, a un codigo de bajo nivel objetivo, como puede ser binario o algun lenguaje especifico.
-La tarea de construir uno no es nada facil y tampoco suele facil de entender o explicar, pero estas son algunas notas de un estudiante que puede que sean mas simples de entender 
-y mejor aun, estan libres para el publico
+Un compilador es una herramienta de programación que permite traducir código de alto nivel a un código de bajo nivel u objetivo, como puede ser binario o algún lenguaje intermedio o específico.
 
+La tarea de construir un compilador no es nada fácil y tampoco suele ser sencilla de entender o explicar. Estas son algunas notas de un estudiante que buscan ser más simples de comprender y, mejor aún, están disponibles de forma libre para el público.
 
-## Una caja negra 
+---
 
-Normalmente es el nombre que se le da una funcion o software del que no se esta seguro como funciona o no se tiene 
-conocimiento sobre como esta escrito el codigo, esto no es necesariamente malo ya que el software privativo suele tener esta carecteristica y muchos temas de programacion igual, no es que el codigo no este disponible, simplemente son temas muy complejos que no siempre son necesarios saber a fondo, Motores de busqueda, motores de bases de datos o librerias complejas.
+## Una caja negra
 
-Un compilador en realidad se podria decir que es una maquina de estados que sigue una serie de relgas o instrucciones, para asegurarse de que el codigo que estamos ingresando es correcto y se puede traducir a un lenguaje maquina objetivo. 
+Normalmente, el término *caja negra* se utiliza para referirse a una función o software del que no se conoce con certeza su funcionamiento interno o cómo está escrito su código. Esto no es necesariamente algo negativo, ya que el software privativo suele tener esta característica, al igual que muchos temas de programación. No es que el código no esté disponible, sino que son temas muy complejos que no siempre es necesario conocer a fondo, como los motores de búsqueda, los motores de bases de datos o ciertas librerías complejas.
 
-Parte importante de un compilador es la gramatica y es que basicamente es imposible lograr un buen compilador si la gramatica del lenguaje no esta bien definida o no existe, ya que a partir de esa gramatica se construye un compilador
+Un compilador, en realidad, podría describirse como una máquina de estados que sigue una serie de reglas o instrucciones para asegurarse de que el código que estamos ingresando es correcto y puede traducirse a un lenguaje máquina objetivo.
 
-### Gramatica
+Una parte fundamental de un compilador es la gramática. Es prácticamente imposible construir un buen compilador si la gramática del lenguaje no está bien definida o simplemente no existe, ya que a partir de esta gramática se construyen la mayoría de sus componentes.
 
-En el ambito de los automatas (un compilador es un automata en escencia) se trata de un conjunto finito de reglas, las cuales describe secuencias validas de simbolos que pertenecen a un lenguaje. El tipo de gramatica que se suele usar es una gramatica libre de contexto, formalmente una gramatica de este tipo se define asi 
+---
 
-```js
-G = (V,T,P,S)
+### Gramática
+
+En el ámbito de los autómatas (un compilador es, en esencia, un sistema basado en autómatas), una gramática se define como un conjunto finito de reglas que describen secuencias válidas de símbolos que pertenecen a un lenguaje.
+
+El tipo de gramática que se suele utilizar en la construcción de compiladores es la **gramática libre de contexto**. Formalmente, una gramática de este tipo se define como:
+
+```text
+G = (V, T, P, S)
 ```
 
-De aqui podemos obtenemos que: 
+De aquí obtenemos que:
 
-- V(No terminlaes) es un conjunto finito de simbolos abstractos o variables
-- T(Terminales) es un conjunto finito de simbolos que forman palabras que corresponden al lenguaje 
-- P(Producciones) es un conjunto de reglas que definen como se puede reemplazar los simbolos no terminales
-- S(No terminal especial) es un simbolo no terminal que es un poco difentes pues el que marca el inicio de la generacion de cadenas
+* **V (No terminales)**: conjunto finito de símbolos abstractos o variables.
+* **T (Terminales)**: conjunto finito de símbolos que forman las palabras del lenguaje.
+* **P (Producciones)**: conjunto de reglas que definen cómo se pueden reemplazar los símbolos no terminales.
+* **S (Símbolo inicial)**: símbolo no terminal especial que marca el inicio de la generación de cadenas del lenguaje.
 
 En general se suelen usar gramaticas que son conocidas como gramaticas libres de contexto, esto es porque cualquier relga se puede aplicar siempre y cuando aparesca el simbolo, no importa que simbolos esten al rededor, (de ahi que no sean sensibles al contexto).
 
