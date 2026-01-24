@@ -37,3 +37,17 @@ En general se suelen usar gramaticas que son conocidas como gramaticas libres de
 
 Aunque esto pueda parecer demasiado formalismo realmente es simple de comprender como se vera a continuación con estos ejemplos
 
+Tomemos esta gramatica por ejemplo
+
+```text
+program -> table_decl+
+table_decl -> "table" IDENT "{" table_item* "}" ";"
+table_item -> column_decl | relation_decl
+column_decl -> IDENT type column_size? column_modifier* ";"
+column_size -> "(" NUM ")"
+column_modifier -> "increment" | "null" | "not_null" | "primary"
+type -> "int" | "string"
+relation_decl -> "relation" IDENT "(" IDENT ")" "to" IDENT "(" IDENT ")" ";"
+```
+
+Esta es una grmatica muy simple para poder escribir las declaraciones de tablas en motores de bases de datos como mysql o mariadb
