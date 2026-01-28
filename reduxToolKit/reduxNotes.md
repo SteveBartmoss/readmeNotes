@@ -78,3 +78,8 @@ createRoot(document.getElementById('root')).render(
 Con esto ya podremo usar el slice desde cualquier parte de nuestra aplicacion, pues estamos encerrando toda la aplicacion dentro del provider de redux. 
 
 La forma en la que trabaja Redux toolkit es similar al hook context de react, pero este tiene algunas mejoras con respecto al context, las cuales serían las siguientes
+
+
+### Mutabilidad
+
+Algo con lo que debemos tener cuidado es con la mutabilidad del estado de reduxtoolkit, por que como tal redux no permite este tipo de cosas, por eso debemos tener cuidado al momento de usar a funcion para establecer el estado
