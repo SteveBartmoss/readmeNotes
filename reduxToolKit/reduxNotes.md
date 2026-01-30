@@ -80,6 +80,34 @@ Con esto ya podremo usar el slice desde cualquier parte de nuestra aplicacion, p
 La forma en la que trabaja Redux toolkit es similar al hook context de react, pero este tiene algunas mejoras con respecto al context, las cuales serían las siguientes
 
 
+### Inmutabilidad
+
+La idea que tiene redux toolkit, es que el estado nunca se actualiza, siempre se crea uno nuevo, por esta razon es que se suelen hacer este tipo de cosas 
+
+```js
+return {
+  ...state,
+  count: state.count + 1
+}
+```
+
+En lugar de hacer algo mas simple como esto 
+
+```js
+state.count = state.count + 1
+```
+
+Eso tiene algunos beneficios como estos 
+
+- Redus compara referencias de objetos lo que permite detectar cambios facilmente
+
+```js
+prevState === nextState // false → hubo cambio
+```
+
+ De otra forma 
+
 ### Mutabilidad
+
 
 Algo con lo que debemos tener cuidado es con la mutabilidad del estado de reduxtoolkit, por que como tal redux no permite este tipo de cosas, por eso debemos tener cuidado al momento de usar a funcion para establecer el estado
