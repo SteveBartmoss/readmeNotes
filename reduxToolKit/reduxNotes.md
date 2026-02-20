@@ -99,13 +99,13 @@ state.count = state.count + 1
 
 Eso tiene algunos beneficios como estos 
 
-- Redus compara referencias de objetos lo que permite detectar cambios facilmente
+- Redux compara referencias de objetos lo que permite detectar cambios facilmente
 
 ```js
 prevState === nextState // false → hubo cambio
 ```
 
- De otra forma 
+De otra forma el cambio nunca se escucharia y por lo mismo no podrian ejecutarse procesos siempre que ocurre un cambio
 
 ### Mutabilidad
 
